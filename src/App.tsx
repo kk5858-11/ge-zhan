@@ -7,6 +7,8 @@ type TextSegment = {
   className?: string;
 };
 
+type Locale = "en" | "zh";
+
 const smoothEase = [0.16, 1, 0.3, 1] as const;
 const cardEase = [0.22, 1, 0.36, 1] as const;
 
@@ -109,15 +111,13 @@ function AnimatedLetter({
   return <motion.span style={{ opacity }}>{char}</motion.span>;
 }
 
-function AboutParagraph() {
+function AboutParagraph({ content }: { content: string }) {
   const ref = useRef<HTMLParagraphElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 0.8", "end 0.2"],
   });
 
-  const content =
-    "Over the last seven years, I have worked with Parallax, a Berlin-based production house that crafts cinema, series, and Noir Studio in Paris. Together, we have created work that has earned international acclaim at several major festivals.";
   const chars = content.split("");
 
   return (
@@ -142,7 +142,15 @@ type FeatureCard = {
   items: string[];
 };
 
-function FeatureInfoCard({ card, index }: { card: FeatureCard; index: number }) {
+function FeatureInfoCard({
+  card,
+  index,
+  learnMoreLabel,
+}: {
+  card: FeatureCard;
+  index: number;
+  learnMoreLabel: string;
+}) {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -170,7 +178,7 @@ function FeatureInfoCard({ card, index }: { card: FeatureCard; index: number }) 
         href="#features"
         className="mt-auto inline-flex items-center gap-2 pt-8 text-sm text-primary/80 transition-all hover:gap-3 hover:text-primary"
       >
-        Learn more <ArrowRight size={16} className="-rotate-45" />
+        {learnMoreLabel} <ArrowRight size={16} className="-rotate-45" />
       </a>
     </motion.article>
   );
@@ -178,6 +186,7 @@ function FeatureInfoCard({ card, index }: { card: FeatureCard; index: number }) 
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [locale, setLocale] = useState<Locale>("en");
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -191,39 +200,108 @@ export default function App() {
     };
   }, [isLoading]);
 
-  const features: FeatureCard[] = [
-    {
-      number: "01",
-      title: "Project Storyboard.",
-      icon: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260405_171918_4a5edc79-d78f-4637-ac8b-53c43c220606.png&w=1280&q=85",
-      items: [
-        "Build visual moodboards in minutes.",
-        "Map scenes with flexible timeline blocks.",
-        "Share interactive story arcs with your team.",
-        "Export references for production sync.",
-      ],
+  const copy = {
+    en: {
+      nav: ["Our story", "Collective", "Workshops", "Programs", "Inquiries"],
+      heroDesc:
+        "I am kk, an AI trainer focused on making models more helpful, stable, and aligned with real user needs. From prompt architecture to evaluation pipelines, I build practical systems that move AI from demo to dependable product.",
+      cta: "Work with kk",
+      aboutLabel: "AI training studio",
+      aboutSegments: [
+        { text: "I am kk," },
+        { text: "an AI trainer.", className: "font-serif italic" },
+        { text: "I specialize in prompt systems, model evaluation, and training data optimization." },
+      ] as TextSegment[],
+      aboutParagraph:
+        "As an AI trainer, I work on prompt engineering, data annotation strategy, evaluation design, and model behavior refinement. I help teams build more reliable AI workflows, reduce hallucinations, and turn prototypes into production-ready assistants that users can trust.",
+      featuresHeadline: [
+        { text: "Production-grade AI workflows for modern teams.", className: "text-[#E1E0CC]" },
+        { text: "Built for reliability. Tuned by training insight.", className: "text-gray-500" },
+      ] as TextSegment[],
+      videoCaption: "Train smarter. Ship safer AI.",
+      learnMore: "Learn more",
+      features: [
+        {
+          number: "01",
+          title: "Prompt Lab.",
+          icon: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260405_171918_4a5edc79-d78f-4637-ac8b-53c43c220606.png&w=1280&q=85",
+          items: [
+            "Design role-based prompt frameworks for complex tasks.",
+            "Build reusable prompt templates for real workflows.",
+            "Define safe prompt boundaries and fallback strategies.",
+            "Document best practices for team-wide consistency.",
+          ],
+        },
+        {
+          number: "02",
+          title: "Eval Engine.",
+          icon: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260405_171741_ed9845ab-f5b2-4018-8ce7-07cc01823522.png&w=1280&q=85",
+          items: [
+            "Create scoring rubrics for quality and factual accuracy.",
+            "Run benchmark sets to compare model behavior changes.",
+            "Track regressions and improve response reliability.",
+          ],
+        },
+        {
+          number: "03",
+          title: "Dataset Forge.",
+          icon: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260405_171809_f56666dc-c099-4778-ad82-9ad4f209567b.png&w=1280&q=85",
+          items: [
+            "Curate high-quality instruction and preference datasets.",
+            "Set annotation guidelines for stable label quality.",
+            "Support RLHF-style iteration with targeted data updates.",
+          ],
+        },
+      ] as FeatureCard[],
     },
-    {
-      number: "02",
-      title: "Smart Critiques.",
-      icon: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260405_171741_ed9845ab-f5b2-4018-8ce7-07cc01823522.png&w=1280&q=85",
-      items: [
-        "Receive AI analysis on pacing and visual flow.",
-        "Turn feedback into structured creative notes.",
-        "Connect directly with your editing tool stack.",
-      ],
+    zh: {
+      nav: ["关于我", "能力方向", "训练方案", "合作流程", "联系咨询"],
+      heroDesc:
+        "我是 kk，一名 AI 训练师，专注让模型更稳定、更实用、更贴近真实用户需求。从 Prompt 架构设计到评测体系搭建，我帮助团队把 AI 从演示阶段推进到可长期上线的产品阶段。",
+      cta: "和 kk 合作",
+      aboutLabel: "AI 训练工作室",
+      aboutSegments: [
+        { text: "我是 kk，" },
+        { text: "一名 AI 训练师。", className: "font-serif italic" },
+        { text: "我专注于 Prompt 体系、模型评测与训练数据优化。" },
+      ] as TextSegment[],
+      aboutParagraph:
+        "我长期参与 Prompt 工程、数据标注策略、评测标准设计与模型行为优化。可以帮助团队降低幻觉、提升回答一致性，并把原型能力沉淀为可靠的生产级 AI 助手体验。",
+      featuresHeadline: [
+        { text: "面向真实业务的 AI 训练工作流。", className: "text-[#E1E0CC]" },
+        { text: "以可靠性为先，由训练经验驱动。", className: "text-gray-500" },
+      ] as TextSegment[],
+      videoCaption: "训练更聪明，交付更可靠的 AI。",
+      learnMore: "了解更多",
+      features: [
+        {
+          number: "01",
+          title: "Prompt 实验室",
+          icon: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260405_171918_4a5edc79-d78f-4637-ac8b-53c43c220606.png&w=1280&q=85",
+          items: [
+            "为复杂任务设计角色化 Prompt 框架。",
+            "沉淀可复用模板，提升团队执行效率。",
+            "定义安全边界与降级策略，减少风险输出。",
+            "建立统一规范，保障多人协作一致性。",
+          ],
+        },
+        {
+          number: "02",
+          title: "评测引擎",
+          icon: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260405_171741_ed9845ab-f5b2-4018-8ce7-07cc01823522.png&w=1280&q=85",
+          items: ["构建质量与事实性评分标准。", "通过基准测试追踪模型改动效果。", "识别回归问题，持续提升稳定性。"],
+        },
+        {
+          number: "03",
+          title: "数据工坊",
+          icon: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260405_171809_f56666dc-c099-4778-ad82-9ad4f209567b.png&w=1280&q=85",
+          items: ["构建高质量指令与偏好数据集。", "制定标注规范，提升标签一致性。", "支持 RLHF 式迭代，精准补齐薄弱样本。"],
+        },
+      ] as FeatureCard[],
     },
-    {
-      number: "03",
-      title: "Immersion Capsule.",
-      icon: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260405_171809_f56666dc-c099-4778-ad82-9ad4f209567b.png&w=1280&q=85",
-      items: [
-        "Silence distracting notifications by project state.",
-        "Play ambient soundscapes tuned for deep focus.",
-        "Sync your concentration windows with calendar.",
-      ],
-    },
-  ];
+  } as const;
+
+  const t = copy[locale];
 
   return (
     <>
@@ -251,6 +329,22 @@ export default function App() {
             >
               Prisma*
             </motion.div>
+            <div className="absolute right-4 top-4 z-20 inline-flex rounded-full border border-primary/30 bg-black/70 p-1 text-xs">
+              <button
+                type="button"
+                onClick={() => setLocale("en")}
+                className={`rounded-full px-3 py-1 transition-colors ${locale === "en" ? "bg-primary text-black" : "text-primary/80"}`}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                onClick={() => setLocale("zh")}
+                className={`rounded-full px-3 py-1 transition-colors ${locale === "zh" ? "bg-primary text-black" : "text-primary/80"}`}
+              >
+                中文
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -272,11 +366,11 @@ export default function App() {
           <nav className="absolute left-1/2 top-0 z-20 -translate-x-1/2 rounded-b-2xl bg-black px-4 py-2 md:rounded-b-3xl md:px-8">
             <ul className="flex items-center gap-3 text-[10px] sm:gap-6 sm:text-xs md:gap-12 md:text-sm lg:gap-14">
               {[
-                { label: "Our story", href: "#hero" },
-                { label: "Collective", href: "#about" },
-                { label: "Workshops", href: "#features" },
-                { label: "Programs", href: "#features" },
-                { label: "Inquiries", href: "#features" },
+                { label: t.nav[0], href: "#hero" },
+                { label: t.nav[1], href: "#about" },
+                { label: t.nav[2], href: "#features" },
+                { label: t.nav[3], href: "#features" },
+                { label: t.nav[4], href: "#features" },
               ].map((item) => (
                 <li key={item.label}>
                   <a
@@ -307,8 +401,7 @@ export default function App() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5, ease: smoothEase }}
                 >
-                  Prisma is a worldwide network of visual artists, filmmakers and storytellers bound not by place,
-                  status or labels but by passion and hunger to unlock potential through our unique perspectives.
+                  {t.heroDesc}
                 </motion.p>
                 <motion.a
                   href="#about"
@@ -318,7 +411,7 @@ export default function App() {
                   transition={{ duration: 0.8, delay: 0.7, ease: smoothEase }}
                   whileHover={{ y: -2 }}
                 >
-                  Join the lab
+                  {t.cta}
                   <span className="grid h-9 w-9 place-items-center rounded-full bg-black transition-transform group-hover:scale-110 sm:h-10 sm:w-10">
                     <ArrowRight size={18} className="text-primary" />
                   </span>
@@ -331,16 +424,12 @@ export default function App() {
 
         <section id="about" className="bg-black px-4 py-20 sm:px-6 md:px-10">
         <div className="mx-auto max-w-6xl rounded-3xl bg-[#101010] px-4 py-14 text-center sm:px-8 sm:py-20 md:px-12">
-          <p className="text-[10px] text-primary sm:text-xs">Visual arts</p>
+          <p className="text-[10px] text-primary sm:text-xs">{t.aboutLabel}</p>
           <WordsPullUpMultiStyle
             className="mx-auto mt-5 max-w-3xl text-3xl font-normal leading-[0.95] text-[#E1E0CC] sm:text-4xl sm:leading-[0.9] md:text-5xl lg:text-6xl xl:text-7xl"
-            segments={[
-              { text: "I am Marcus Chen," },
-              { text: "a self-taught director.", className: "font-serif italic" },
-              { text: "I have skills in color grading, visual effects, and narrative design." },
-            ]}
+            segments={t.aboutSegments}
           />
-          <AboutParagraph />
+          <AboutParagraph content={t.aboutParagraph} />
         </div>
         </section>
 
@@ -349,10 +438,7 @@ export default function App() {
         <div className="relative z-10 mx-auto max-w-7xl">
           <WordsPullUpMultiStyle
             className="text-center text-xl font-normal sm:text-2xl md:text-3xl lg:text-4xl"
-            segments={[
-              { text: "Studio-grade workflows for visionary creators.", className: "text-[#E1E0CC]" },
-              { text: "Built for pure vision. Powered by art.", className: "text-gray-500" },
-            ]}
+            segments={t.featuresHeadline}
           />
 
           <div className="mt-12 grid gap-3 md:grid-cols-2 md:gap-1 lg:h-[480px] lg:grid-cols-4">
@@ -373,11 +459,11 @@ export default function App() {
                 playsInline
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10" />
-              <p className="absolute bottom-5 left-5 text-lg text-[#E1E0CC] sm:text-xl">Your creative canvas.</p>
+              <p className="absolute bottom-5 left-5 text-lg text-[#E1E0CC] sm:text-xl">{t.videoCaption}</p>
             </motion.article>
 
-            {features.map((card, index) => (
-              <FeatureInfoCard key={card.title} card={card} index={index + 1} />
+            {t.features.map((card, index) => (
+              <FeatureInfoCard key={card.title} card={card} index={index + 1} learnMoreLabel={t.learnMore} />
             ))}
           </div>
         </div>
