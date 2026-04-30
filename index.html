@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kk - Developer & Designer</title>
+    <meta
+      name="description"
+      content="一个简洁、现代的个人作品集网站，展示项目、文章和联系方式。"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="kk - Developer & Designer" />
+    <meta
+      property="og:description"
+      content="一个简洁、现代的个人作品集网站，展示项目、文章和联系方式。"
+    />
+    <meta property="og:url" content="https://yourdomain.com" />
+    <meta property="og:locale" content="zh_CN" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://yourdomain.com" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="kk - Developer & Designer" />
+    <meta
+      name="twitter:description"
+      content="一个简洁、现代的个人作品集网站，展示项目、文章和联系方式。"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%238ab4ff'/></svg>" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "kk",
+      "jobTitle": "Developer & Designer",
+      "url": "https://yourdomain.com",
+      "knowsAbout": ["Web Development", "UI/UX Design"],
+      "description": "一个简洁、现代的个人作品集网站，展示项目、文章和联系方式。"
+    }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Skip to content -->
+    <a class="skip-link" href="#top">跳到主要内容</a>
+
+    <div class="grain-overlay" aria-hidden="true"></div>
+    <div class="tech-grid" aria-hidden="true"></div>
+
+    <!-- Background Orbs -->
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+
+    <!-- Icons Sprite -->
+    <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+      <defs>
+        <path id="icon-arrow-right" d="M4.5 10h11m0 0l-4-4m4 4l-4 4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="icon-arrow-up-right" d="M4.5 15l10-10m0 0H8m6.5 0v6.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="icon-chevron-down" d="M6 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="icon-grid" d="M3 4h5v5H3V4zm0 7h5v5H3v-5zm7-7h5v5h-5V4zm0 7h5v5h-5v-5z" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="icon-edit" d="M11 3l4 4-8 8H3v-4l8-8z" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="icon-mail" d="M3 5h14a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1zm0 1l7 5 7-5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="icon-file" d="M5 3h6l4 4v10a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1zm6 0v4h4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="icon-briefcase" d="M4 8h12a1 1 0 011 1v7a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1zm2-2V5a1 1 0 011-1h6a1 1 0 011 1v1" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="icon-external" d="M11 3h6v6m0-6L9 11m8-6v6" stroke-linecap="round" stroke-linejoin="round"/>
+      </defs>
+    </svg>
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="sidebar" role="navigation" aria-label="主导航">
+      <div class="sidebar-inner">
+        <a class="brand" href="#top">
+          <span class="brand-dot"></span>
+          <span class="brand-name" data-edit="brand-name">kk</span>
+        </a>
+
+        <nav class="sidebar-nav">
+          <a href="#projects" class="sidebar-link">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-grid"/></svg>
+            <span>项目</span>
+          </a>
+          <a href="#writing" class="sidebar-link">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-edit"/></svg>
+            <span>文章</span>
+          </a>
+          <a href="#contact" class="sidebar-link">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-mail"/></svg>
+            <span>联系</span>
+          </a>
+          <div class="sidebar-divider"></div>
+          <a href="#resume" class="sidebar-link">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-file"/></svg>
+            <span>简历</span>
+          </a>
+          <a href="#experience" class="sidebar-link">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-briefcase"/></svg>
+            <span>工作经历</span>
+          </a>
+          <a href="https://www.xiaohongshu.com" target="_blank" rel="noopener" class="sidebar-link sidebar-link-external">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-external"/></svg>
+            <span>小红书作品集</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button id="themeToggle" class="theme-btn" type="button" aria-label="切换主题">🌙</button>
+          <button id="editToggle" class="edit-btn" type="button" aria-label="切换编辑模式" title="编辑页面内容">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-edit"/></svg>
+            <span>编辑</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ===== Page Content ===== -->
+    <div class="page">
+      <main id="top">
+        <!-- ===== Hero ===== -->
+        <section class="hero">
+          <div class="hero-bg" aria-hidden="true">
+            <img
+              src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?w=1200&h=800&fit=crop&auto=format"
+              alt=""
+              class="hero-bg-img"
+            />
+            <div class="hero-bg-overlay"></div>
+          </div>
+          <div class="hero-text">
+            <p class="eyebrow" data-edit="hero-eyebrow">Developer & Designer</p>
+            <h1 data-edit="hero-title">你好，我是<br />kk。</h1>
+            <p class="lead" data-edit="hero-lead">
+              我专注于做简洁、好看、好用的网站和产品。这里展示我的项目、文章和联系方式。
+            </p>
+            <div class="hero-status">
+              <span class="status-dot"></span>
+              <span class="status-text" data-edit="hero-status">开放合作 / Open to opportunities</span>
+            </div>
+            <div class="hero-links">
+              <a href="#projects">
+                项目
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-arrow-right"/></svg>
+              </a>
+              <a href="#experience">
+                经历
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-arrow-right"/></svg>
+              </a>
+              <a href="#resume">
+                简历
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-arrow-right"/></svg>
+              </a>
+              <a href="#hongshu">
+                小红书
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-external"/></svg>
+              </a>
+              <a href="#contact">
+                联系
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-arrow-right"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="tech-ring-group">
+              <svg viewBox="0 0 200 200" class="tech-ring-svg">
+                <defs>
+                  <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.6"/>
+                    <stop offset="50%" stop-color="var(--accent-2)" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="85" fill="none" stroke="url(#ring-grad)" stroke-width="1" class="ring-1"/>
+                <circle cx="100" cy="100" r="65" fill="none" stroke="url(#ring-grad)" stroke-width="0.8" class="ring-2"/>
+                <circle cx="100" cy="100" r="45" fill="none" stroke="url(#ring-grad)" stroke-width="0.5" class="ring-3"/>
+                <circle cx="100" cy="100" r="4" fill="var(--accent)" opacity="0.4" class="ring-dot"/>
+                <line x1="100" y1="100" x2="185" y2="15" stroke="var(--accent)" stroke-width="0.8" opacity="0.4" class="ring-beam"/>
+                <circle cx="185" cy="15" r="2.5" fill="var(--accent)" opacity="0.6" class="ring-pulse"/>
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== Projects ===== -->
+        <section id="projects" class="section container">
+          <div class="section-head">
+            <h2 data-edit="section-projects">Projects</h2>
+            <a href="#" aria-label="查看全部项目">
+              View all
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-arrow-right"/></svg>
+            </a>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-img">
+                <img
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=340&fit=crop&auto=format"
+                  srcset="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=225&fit=crop&auto=format 400w,
+                          https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=340&fit=crop&auto=format 600w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  alt="" width="600" height="340" loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <h3 data-edit="project-1-title">Recroot</h3>
+                <p data-edit="project-1-desc">一个面向创作者的作品管理工具，帮助统一整理项目和素材。</p>
+                <span data-edit="project-1-tag">Product Design / Frontend</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card-img">
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop&auto=format"
+                  srcset="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=225&fit=crop&auto=format 400w,
+                          https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop&auto=format 600w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  alt="" width="600" height="340" loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <h3 data-edit="project-2-title">Wrap.so</h3>
+                <p data-edit="project-2-desc">自动化生成社媒配图的在线工具，让内容发布更高效。</p>
+                <span data-edit="project-2-tag">Tooling / Visual System</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card-img">
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=340&fit=crop&auto=format"
+                  srcset="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=225&fit=crop&auto=format 400w,
+                          https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=340&fit=crop&auto=format 600w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  alt="" width="600" height="340" loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <h3 data-edit="project-3-title">Vouch For</h3>
+                <p data-edit="project-3-desc">可信推荐平台，帮助团队快速验证候选人和合作伙伴背景。</p>
+                <span data-edit="project-3-tag">Brand / UX / Interface</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ===== Writing ===== -->
+        <section id="writing" class="section container">
+          <div class="section-head">
+            <h2 data-edit="section-writing">Writing</h2>
+            <a href="#" aria-label="查看全部文章">
+              Read more
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-arrow-right"/></svg>
+            </a>
+          </div>
+          <article class="post">
+            <p class="post-date" data-edit="post-date">May 5, 2021</p>
+            <h3 data-edit="post-title">How it started vs. how it's going</h3>
+            <p data-edit="post-desc">关于我从设计到开发的成长路径，以及在交叉领域中的价值思考。</p>
+          </article>
+        </section>
+
+        <!-- ===== Contact ===== -->
+        <section id="contact" class="section container">
+          <div class="contact-card">
+            <h2 data-edit="contact-title">Shall I keep you in the loop?</h2>
+            <p data-edit="contact-desc">订阅更新，获取文章、产品早期体验和持续学习记录。</p>
+            <form class="subscribe-form" action="#" method="post">
+              <label for="email" class="sr-only">邮箱</label>
+              <input id="email" type="email" placeholder="输入你的邮箱" required />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </section>
+        <!-- ===== Resume ===== -->
+        <section id="resume" class="section container">
+          <div class="section-head">
+            <h2 data-edit="section-resume">简历</h2>
+            <a href="#" aria-label="下载简历 PDF">
+              Download PDF
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-arrow-up-right"/></svg>
+            </a>
+          </div>
+          <div class="resume-grid">
+            <div class="resume-card">
+              <span class="resume-label" data-edit="resume-label-1">专业技能</span>
+              <div class="skill-tags">
+                <span class="tag">UI/UX Design</span>
+                <span class="tag">Frontend Dev</span>
+                <span class="tag">Product Design</span>
+                <span class="tag">Brand Identity</span>
+                <span class="tag">Prototyping</span>
+                <span class="tag">Design System</span>
+              </div>
+            </div>
+            <div class="resume-card">
+              <span class="resume-label" data-edit="resume-label-2">工具</span>
+              <div class="skill-tags">
+                <span class="tag">Figma</span>
+                <span class="tag">VS Code</span>
+                <span class="tag">Webflow</span>
+                <span class="tag">After Effects</span>
+                <span class="tag">Notion</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== Experience ===== -->
+        <section id="experience" class="section container">
+          <div class="section-head">
+            <h2 data-edit="section-experience">工作经历</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-body">
+                <div class="timeline-meta">
+                  <span class="timeline-role" data-edit="timeline-1-role">Senior Product Designer</span>
+                  <span class="timeline-company" data-edit="timeline-1-company">Design Studio</span>
+                  <span class="timeline-date" data-edit="timeline-1-date">2022 — 至今</span>
+                </div>
+                <p data-edit="timeline-1-desc">负责产品设计策略、设计系统搭建和团队协作流程优化。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-body">
+                <div class="timeline-meta">
+                  <span class="timeline-role" data-edit="timeline-2-role">UI/UX Designer</span>
+                  <span class="timeline-company" data-edit="timeline-2-company">Tech Corp</span>
+                  <span class="timeline-date" data-edit="timeline-2-date">2020 — 2022</span>
+                </div>
+                <p data-edit="timeline-2-desc">参与多款 B 端和 C 端产品的界面与交互设计，主导设计系统落地。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-body">
+                <div class="timeline-meta">
+                  <span class="timeline-role" data-edit="timeline-3-role">Junior Designer</span>
+                  <span class="timeline-company" data-edit="timeline-3-company">Creative Lab</span>
+                  <span class="timeline-date" data-edit="timeline-3-date">2018 — 2020</span>
+                </div>
+                <p data-edit="timeline-3-desc">支持品牌设计、营销物料和产品原型制作。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== Xiaohongshu ===== -->
+        <section id="hongshu" class="section container">
+          <div class="section-head">
+            <h2 data-edit="section-hongshu">小红书作品集</h2>
+            <a href="https://www.xiaohongshu.com" target="_blank" rel="noopener" aria-label="打开小红书主页">
+              查看主页
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="icon"><use href="#icon-external"/></svg>
+            </a>
+          </div>
+          <div class="hongshu-grid">
+            <article class="hongshu-card">
+              <div class="hongshu-img" style="background:linear-gradient(135deg,#f093fb,#f5576c)"></div>
+              <div class="hongshu-body">
+                <p data-edit="hongshu-1-desc">设计日常分享 — 工作流与工具推荐</p>
+              </div>
+            </article>
+            <article class="hongshu-card">
+              <div class="hongshu-img" style="background:linear-gradient(135deg,#4facfe,#00f2fe)"></div>
+              <div class="hongshu-body">
+                <p data-edit="hongshu-2-desc">UI 设计技巧 — 从零到一搭建设计系统</p>
+              </div>
+            </article>
+            <article class="hongshu-card">
+              <div class="hongshu-img" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb)"></div>
+              <div class="hongshu-body">
+                <p data-edit="hongshu-3-desc">作品集解析 — 拿到大厂 offer 的设计方案</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p data-edit="footer-text">© <span id="year"></span> kk. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
