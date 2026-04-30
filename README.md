@@ -27,6 +27,28 @@ python3 -m http.server 8080
 
 `http://localhost:8080`
 
+## 一键发布到 GitHub Pages
+
+首次使用前给脚本执行权限：
+
+```bash
+chmod +x deploy.sh
+```
+
+之后每次改完网站内容，在项目目录运行：
+
+```bash
+./deploy.sh "更新说明"
+```
+
+示例：
+
+```bash
+./deploy.sh "更新首页文案和项目卡片"
+```
+
+发布成功后，GitHub Pages 会自动重新部署，通常 1-5 分钟同步到线上链接。
+
 ## 后续可改
 
 - 替换个人信息（名字、简介、社交链接）
