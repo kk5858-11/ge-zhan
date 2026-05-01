@@ -1,33 +1,40 @@
 "use client";
 
 /**
- * 首屏文案层：渐变标题、副文案、CTA（Framer Motion 入场）
- * pointer-events 精细控制：避免挡住 3D 拖拽，仅按钮可点
+ * 首屏 Hero：锚点 #home（与导航「首页」对应）
  */
 import { motion } from "framer-motion";
-import { SITE } from "@/lib/site";
+import { useSiteUi } from "@/components/providers/SiteUiProvider";
 
 export function HeroSection() {
+  const { t, theme } = useSiteUi();
+
   return (
     <section
-      id="hero"
-      className="relative z-10 flex min-h-[100dvh] flex-col items-center justify-end px-6 pb-24 pt-32 text-center md:pb-32"
+      id="home"
+      className="relative z-10 flex min-h-[100dvh] scroll-mt-[72px] flex-col items-center justify-end px-6 pb-24 pt-32 text-center md:scroll-mt-[76px] md:pb-32"
     >
       <motion.h1
-        className="pointer-events-none max-w-4xl bg-gradient-to-b from-white via-indigo-100 to-indigo-400/90 bg-clip-text text-4xl font-semibold tracking-tight text-transparent md:text-6xl"
+        className={`pointer-events-none max-w-4xl bg-gradient-to-b bg-clip-text text-4xl font-semibold tracking-tight text-transparent md:text-6xl ${
+          theme === "light"
+            ? "from-zinc-900 via-indigo-800 to-indigo-500"
+            : "from-white via-indigo-100 to-indigo-400/90"
+        }`}
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       >
-        Hi, I&apos;m {SITE.name}
+        Hi, I&apos;m {t.name}
       </motion.h1>
       <motion.p
-        className="pointer-events-none mt-5 max-w-xl text-sm text-zinc-400 md:text-base"
+        className={`pointer-events-none mt-5 max-w-xl text-sm md:text-base ${
+          theme === "light" ? "text-zinc-600" : "text-zinc-400"
+        }`}
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
       >
-        {SITE.heroSubtitle}
+        {t.heroSubtitle}
       </motion.p>
       <motion.a
         href="#contact"
@@ -38,7 +45,7 @@ export function HeroSection() {
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.98 }}
       >
-        预约一次交流
+        {t.heroCta}
       </motion.a>
     </section>
   );

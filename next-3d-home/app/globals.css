@@ -23,6 +23,11 @@ body {
   overflow-x: hidden;
 }
 
+html[data-theme="light"] {
+  --background: #f4f4f5;
+  --foreground: #18181b;
+}
+
 /* 翻转卡片背面隐藏（部分浏览器需显式声明） */
 .backface-hidden {
   backface-visibility: hidden;

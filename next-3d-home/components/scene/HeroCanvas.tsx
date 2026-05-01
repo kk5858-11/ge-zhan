@@ -7,6 +7,7 @@
 import { Canvas } from "@react-three/fiber";
 import { ContactShadows, Environment, OrbitControls, SoftShadows } from "@react-three/drei";
 import { Suspense } from "react";
+import type { Theme } from "@/components/providers/SiteUiProvider";
 import { AbstractHero } from "./AbstractHero";
 import { ScenePostFX } from "./ScenePostFX";
 
@@ -15,9 +16,14 @@ type Props = {
   postFx: boolean;
   /** 移动端简化 */
   reducedMotion: boolean;
+  /** 与导航栏主题切换联动 */
+  theme: Theme;
 };
 
-export function HeroCanvas({ postFx, reducedMotion }: Props) {
+export function HeroCanvas({ postFx, reducedMotion, theme }: Props) {
+  const bg = theme === "light" ? "#e4e4e7" : "#0a0a0d";
+  const amb = theme === "light" ? 0.55 : 0.35;
+
   return (
     <div className="pointer-events-auto fixed inset-0 z-0 h-[100dvh] w-full">
       <Canvas
@@ -27,8 +33,8 @@ export function HeroCanvas({ postFx, reducedMotion }: Props) {
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         frameloop="always"
       >
-        <color attach="background" args={["#0a0a0d"]} />
-        <ambientLight intensity={0.35} />
+        <color attach="background" args={[bg]} />
+        <ambientLight intensity={amb} />
         <spotLight
           castShadow
           position={[6, 8, 4]}

@@ -2,7 +2,8 @@
 
 若 **Vercel / GitHub OAuth 登录失败**，可直接使用 **GitHub Pages 子路径**（已接入 CI，无需外站登录）：
 
-**Next 3D 个站：** [https://kk5858-11.github.io/ge-zhan/next-3d/](https://kk5858-11.github.io/ge-zhan/next-3d/)  
+**Next 3D 个站（含导航栏 / 主题 / 中英 / 锚点）：**  
+[https://kk5858-11.github.io/ge-zhan/next-3d/](https://kk5858-11.github.io/ge-zhan/next-3d/)  
 （推送 `main` 后由 Actions 构建；若刚推送，请等待 1～3 分钟再打开。）
 
 ---

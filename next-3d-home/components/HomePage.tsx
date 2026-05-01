@@ -1,17 +1,20 @@
 "use client";
 
 /**
- * 单页主入口：底层全屏 3D + 上层滚动内容
- * GSAP ScrollTrigger：驱动滚动视差时间线（轻量：整体进度驱动 UI）
+ * 单页主入口：全局 Provider、固定导航、底层 3D、各锚点区块
  */
 import dynamic from "next/dynamic";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SiteUiProvider, useSiteUi } from "@/components/providers/SiteUiProvider";
+import { Navbar } from "@/components/Navbar";
 import { CustomCursor } from "@/components/CustomCursor";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
+import { BlogSection } from "@/components/sections/BlogSection";
+import { ServiceSection } from "@/components/sections/ServiceSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
@@ -21,8 +24,17 @@ const HeroCanvas = dynamic(() => import("@/components/scene/HeroCanvas").then((m
 });
 
 export function HomePage() {
+  return (
+    <SiteUiProvider>
+      <HomePageInner />
+    </SiteUiProvider>
+  );
+}
+
+function HomePageInner() {
   const rootRef = useRef<HTMLDivElement>(null);
   const mobile = useIsMobile();
+  const { theme } = useSiteUi();
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -46,25 +58,42 @@ export function HomePage() {
     return () => ctx.revert();
   }, []);
 
+  const pageBg =
+    theme === "light"
+      ? "bg-[#f4f4f5] text-zinc-900"
+      : "bg-[#0a0a0d] text-zinc-100";
+
   return (
-    <div ref={rootRef} className="relative min-h-screen bg-[#0a0a0d] text-zinc-100">
-      {/* 全屏 3D：移动端关闭重后期、降低动效 */}
-      <HeroCanvas postFx={!mobile} reducedMotion={mobile} />
+    <div ref={rootRef} className={`relative min-h-screen ${pageBg}`}>
+      <HeroCanvas postFx={!mobile} reducedMotion={mobile} theme={theme} />
+
+      <Navbar />
 
       <CustomCursor />
 
-      {/* 前景内容：半透明渐变遮罩，保证文字可读又不完全挡住 3D */}
-      <div className="pointer-events-none fixed inset-0 z-[1] bg-gradient-to-b from-[#0a0a0d]/10 via-transparent to-[#0a0a0d]/85" />
+      <div
+        className={`pointer-events-none fixed inset-0 z-[1] bg-gradient-to-b ${
+          theme === "light"
+            ? "from-white/30 via-transparent to-[#f4f4f5]/90"
+            : "from-[#0a0a0d]/10 via-transparent to-[#0a0a0d]/85"
+        }`}
+      />
 
       <div className="pointer-events-none relative z-10 flex min-h-screen flex-col">
         <div data-parallax className="pointer-events-auto">
           <HeroSection />
           <AboutSection />
           <PortfolioSection />
+          <BlogSection />
+          <ServiceSection />
           <ContactSection />
         </div>
-        <footer className="pointer-events-auto pb-10 text-center text-xs text-zinc-600">
-          © {new Date().getFullYear()} kk · Built with Next.js 14 + R3F
+        <footer
+          className={`pointer-events-auto pb-10 text-center text-xs ${
+            theme === "light" ? "text-zinc-500" : "text-zinc-600"
+          }`}
+        >
+          © {new Date().getFullYear()} kk · Next.js 14 + R3F
         </footer>
       </div>
     </div>

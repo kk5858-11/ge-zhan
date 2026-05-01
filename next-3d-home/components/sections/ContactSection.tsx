@@ -1,15 +1,17 @@
 "use client";
 
 /**
- * 联系区：输入框微动 + 提交时粒子爆发（轻量 DOM 粒子 + GSAP）
+ * 联系：锚点 #contact，表单 + 粒子演示 + 社交入口
  */
 import { motion } from "framer-motion";
 import { FormEvent, useCallback, useRef, useState } from "react";
 import gsap from "gsap";
+import { useSiteUi } from "@/components/providers/SiteUiProvider";
 
 type Particle = { id: number };
 
 export function ContactSection() {
+  const { t, theme } = useSiteUi();
   const [particles, setParticles] = useState<Particle[]>([]);
   const idRef = useRef(0);
 
@@ -48,8 +50,18 @@ export function ContactSection() {
     burst();
   };
 
+  const formSurface =
+    theme === "light"
+      ? "border-black/10 bg-white/80 shadow-[0_0_40px_-20px_rgba(99,102,241,0.25)]"
+      : "border-white/10 bg-white/[0.03] shadow-[0_0_60px_-28px_rgba(99,102,241,0.85)]";
+
+  const input =
+    theme === "light"
+      ? "border-black/10 bg-white text-zinc-900 placeholder:text-zinc-400"
+      : "border-white/10 bg-black/40 text-zinc-100 placeholder:text-zinc-500";
+
   return (
-    <section id="contact" className="relative z-10 px-6 py-28 md:py-36">
+    <section id="contact" className="relative z-10 scroll-mt-[72px] px-6 py-28 md:scroll-mt-[76px] md:py-36">
       <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-[1.1fr_0.9fr] md:items-start">
         <div>
           <motion.h2
@@ -58,15 +70,17 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Contact
+            {t.contactKicker}
           </motion.h2>
-          <p className="mt-4 max-w-md text-2xl text-zinc-100 md:text-3xl">一起把 AI 做到「可交付」。</p>
-          <p className="mt-4 text-sm text-zinc-400">留下需求与联系方式，我会在 24h 内回复。</p>
+          <p className={`mt-4 max-w-md text-2xl md:text-3xl ${theme === "light" ? "text-zinc-900" : "text-zinc-100"}`}>
+            {t.contactLead}
+          </p>
+          <p className={`mt-4 text-sm ${theme === "light" ? "text-zinc-600" : "text-zinc-400"}`}>{t.contactFormHint}</p>
         </div>
 
         <motion.form
           onSubmit={onSubmit}
-          className="relative rounded-3xl border border-white/10 bg-white/[0.03] p-8 shadow-[0_0_60px_-28px_rgba(99,102,241,0.85)] backdrop-blur-xl"
+          className={`relative rounded-3xl border p-8 backdrop-blur-xl ${formSurface}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -74,24 +88,23 @@ export function ContactSection() {
           <label className="block text-xs uppercase tracking-widest text-zinc-500">Name</label>
           <motion.input
             whileFocus={{ y: -2 }}
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-zinc-100 outline-none ring-0 transition focus:border-indigo-400/60"
-            placeholder="怎么称呼你"
+            className={`mt-2 w-full rounded-2xl border px-4 py-3 text-sm outline-none transition focus:border-indigo-400/60 ${input}`}
+            placeholder={t.namePh}
           />
           <label className="mt-6 block text-xs uppercase tracking-widest text-zinc-500">Message</label>
           <motion.textarea
             whileFocus={{ y: -2 }}
             rows={4}
-            className="mt-2 w-full resize-none rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-zinc-100 outline-none transition focus:border-indigo-400/60"
-            placeholder="想解决什么问题？"
+            className={`mt-2 w-full resize-none rounded-2xl border px-4 py-3 text-sm outline-none transition focus:border-indigo-400/60 ${input}`}
+            placeholder={t.msgPh}
           />
           <div className="relative mt-8">
             <button
               type="submit"
               className="relative z-10 w-full rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_40px_-10px_rgba(99,102,241,0.9)] transition hover:bg-indigo-400"
             >
-              发送（演示粒子）
+              {t.contactSubmit}
             </button>
-            {/* 粒子：相对按钮容器中心爆发 */}
             {particles.map((pt) => (
               <span
                 key={pt.id}
@@ -103,17 +116,49 @@ export function ContactSection() {
         </motion.form>
       </div>
 
-      <div className="mx-auto mt-16 flex max-w-5xl justify-center gap-8 text-zinc-400">
-        {["GitHub", "X", "Mail"].map((label) => (
-          <motion.a
-            key={label}
-            href="#"
-            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-xs"
-            whileHover={{ rotate: 12, y: -4, borderColor: "rgba(165,180,252,0.8)" }}
-          >
-            {label[0]}
-          </motion.a>
-        ))}
+      <div className="mx-auto mt-12 max-w-md text-center">
+        <p className={`text-xs ${theme === "light" ? "text-zinc-500" : "text-zinc-500"}`}>WeChat · 替换为你的二维码图片</p>
+        <div
+          className={`mx-auto mt-3 flex h-28 w-28 items-center justify-center rounded-xl border border-dashed text-[10px] ${
+            theme === "light" ? "border-black/15 text-zinc-500" : "border-white/20 text-zinc-500"
+          }`}
+        >
+          QR
+        </div>
+      </div>
+
+      <div className={`mx-auto mt-16 flex max-w-5xl justify-center gap-8 ${theme === "light" ? "text-zinc-600" : "text-zinc-400"}`}>
+        <motion.a
+          href="https://github.com/kk5858-11"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`flex h-12 w-12 items-center justify-center rounded-full border text-xs ${
+            theme === "light" ? "border-black/10 bg-white/80" : "border-white/10 bg-white/5"
+          }`}
+          whileHover={{ rotate: 12, y: -4, borderColor: "rgba(165,180,252,0.8)" }}
+        >
+          G
+        </motion.a>
+        <motion.a
+          href="https://www.xiaohongshu.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`flex h-12 w-12 items-center justify-center rounded-full border text-xs ${
+            theme === "light" ? "border-black/10 bg-white/80" : "border-white/10 bg-white/5"
+          }`}
+          whileHover={{ rotate: 12, y: -4, borderColor: "rgba(165,180,252,0.8)" }}
+        >
+          红
+        </motion.a>
+        <motion.a
+          href="mailto:hello@example.com"
+          className={`flex h-12 w-12 items-center justify-center rounded-full border text-xs ${
+            theme === "light" ? "border-black/10 bg-white/80" : "border-white/10 bg-white/5"
+          }`}
+          whileHover={{ rotate: 12, y: -4, borderColor: "rgba(165,180,252,0.8)" }}
+        >
+          @
+        </motion.a>
       </div>
     </section>
   );
