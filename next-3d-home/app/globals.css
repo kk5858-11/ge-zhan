@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * 全局：深色电影感背景 + 平滑滚动
+ * 自定义属性供 Tailwind 主题引用
+ */
+:root {
+  --background: #0a0a0d;
+  --foreground: #e4e4e7;
+  --accent: #6366f1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* 翻转卡片背面隐藏（部分浏览器需显式声明） */
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
