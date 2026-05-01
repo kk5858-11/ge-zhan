@@ -11,6 +11,10 @@ const nextConfig = {
   output: "export",
   basePath: basePath || undefined,
   assetPrefix: basePath || undefined,
+  /** 供客户端拼接 public 资源路径（子路径部署时与 basePath 一致） */
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   images: { unoptimized: true },
   /** R3F / three 在 Next 中建议显式转译，减少打包兼容问题 */
   transpilePackages: ["three", "@react-three/fiber", "@react-three/drei", "@react-three/postprocessing"],

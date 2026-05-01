@@ -19,10 +19,10 @@ export const COPY: Record<
     heroSubtitle: string;
     aboutBody: string;
     skills: string[];
-    projects: { id: string; name: string; desc: string }[];
+    projects: { id: string; name: string; desc: string; image: number }[];
     blogTitle: string;
     blogLead: string;
-    blogPosts: { title: string; excerpt: string }[];
+    blogPosts: { title: string; excerpt: string; cover: number }[];
     serviceTitle: string;
     serviceLead: string;
     serviceItems: string[];
@@ -62,16 +62,19 @@ export const COPY: Record<
       "我帮助团队搭建可复用的 AI 工作流：从提示词工程到评测基准，从标注规范到迭代节奏。用工程化方法降低幻觉与回归风险。",
     skills: ["Prompt Engineering", "Eval & Rubrics", "Data Curation", "RAG", "Next.js", "Three.js"],
     projects: [
-      { id: "p1", name: "AI Eval Dashboard", desc: "多模型对比与回归追踪" },
-      { id: "p2", name: "Prompt Studio", desc: "模板化提示词与版本管理" },
-      { id: "p3", name: "Annotation Pipeline", desc: "标注质检与偏好数据构建" },
+      { id: "p1", name: "AI Eval Dashboard", desc: "多模型对比与回归追踪", image: 0 },
+      { id: "p2", name: "Prompt Studio", desc: "模板化提示词与版本管理", image: 1 },
+      { id: "p3", name: "Annotation Pipeline", desc: "标注质检与偏好数据构建", image: 2 },
+      { id: "v1", name: "云端之上", desc: "留白与尺度 · 电影感静帧", image: 3 },
+      { id: "v2", name: "夜航", desc: "紫暮与灯火 · 超现实氛围", image: 4 },
+      { id: "v3", name: "立方之海", desc: "几何与梦境 · 3D 视觉实验", image: 5 },
     ],
     blogTitle: "博客 / 笔记",
     blogLead: "技术随笔、AI 干货与知识沉淀。",
     blogPosts: [
-      { title: "如何用评测集锁住模型迭代", excerpt: "从 rubric 设计到回归门禁的实践清单。" },
-      { title: "Prompt 模板的版本化治理", excerpt: "多人协作下保持输出风格一致。" },
-      { title: "偏好数据与 RLHF 流程随笔", excerpt: "数据质量比规模更重要。" },
+      { title: "如何用评测集锁住模型迭代", excerpt: "从 rubric 设计到回归门禁的实践清单。", cover: 1 },
+      { title: "Prompt 模板的版本化治理", excerpt: "多人协作下保持输出风格一致。", cover: 2 },
+      { title: "偏好数据与 RLHF 流程随笔", excerpt: "数据质量比规模更重要。", cover: 5 },
     ],
     serviceTitle: "服务",
     serviceLead: "咨询、定制与落地支持（可按需调整范围）。",
@@ -116,16 +119,19 @@ export const COPY: Record<
       "I help teams ship reusable AI workflows: prompt engineering, eval benchmarks, annotation playbooks, and iteration cadence—with fewer regressions.",
     skills: ["Prompt Engineering", "Eval & Rubrics", "Data Curation", "RAG", "Next.js", "Three.js"],
     projects: [
-      { id: "p1", name: "AI Eval Dashboard", desc: "Compare models and track regressions." },
-      { id: "p2", name: "Prompt Studio", desc: "Templated prompts with versioning." },
-      { id: "p3", name: "Annotation Pipeline", desc: "Quality gates for preference data." },
+      { id: "p1", name: "AI Eval Dashboard", desc: "Compare models and track regressions.", image: 0 },
+      { id: "p2", name: "Prompt Studio", desc: "Templated prompts with versioning.", image: 1 },
+      { id: "p3", name: "Annotation Pipeline", desc: "Quality gates for preference data.", image: 2 },
+      { id: "v1", name: "Above the Clouds", desc: "Negative space & scale · cinematic still", image: 3 },
+      { id: "v2", name: "Night Passage", desc: "Purple dusk & city lights · surreal mood", image: 4 },
+      { id: "v3", name: "Cubic Sea", desc: "Geometry & dream · 3D visual study", image: 5 },
     ],
     blogTitle: "Blog / Notes",
     blogLead: "Essays on AI, tooling, and craft.",
     blogPosts: [
-      { title: "Locking iterations with eval suites", excerpt: "Rubrics, baselines, and release gates." },
-      { title: "Versioning prompt templates", excerpt: "Keeping tone consistent across teams." },
-      { title: "Notes on preference data", excerpt: "Quality beats volume." },
+      { title: "Locking iterations with eval suites", excerpt: "Rubrics, baselines, and release gates.", cover: 1 },
+      { title: "Versioning prompt templates", excerpt: "Keeping tone consistent across teams.", cover: 2 },
+      { title: "Notes on preference data", excerpt: "Quality beats volume.", cover: 5 },
     ],
     serviceTitle: "Services",
     serviceLead: "Consulting, builds, and hands-on support.",

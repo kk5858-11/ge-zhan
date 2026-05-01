@@ -4,8 +4,10 @@
  * 作品集：锚点 #works，横向滚轮画廊
  */
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useRef, WheelEvent } from "react";
 import { useSiteUi } from "@/components/providers/SiteUiProvider";
+import { ART_PATHS, publicUrl } from "@/lib/artGallery";
 
 export function PortfolioSection() {
   const scroller = useRef<HTMLDivElement>(null);
@@ -57,6 +59,15 @@ export function PortfolioSection() {
               whileHover={{ y: -10, scale: 1.02 }}
             >
               <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_top,_rgba(129,140,248,0.35),_transparent_55%)] opacity-0 transition group-hover:opacity-100" />
+              <div className="relative mb-5 aspect-[3/4] w-full overflow-hidden rounded-2xl">
+                <Image
+                  src={publicUrl(ART_PATHS[p.image])}
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 78vw, 340px"
+                  className="object-cover transition duration-500 group-hover:scale-[1.04]"
+                />
+              </div>
               <p className="text-xs text-indigo-300/80">Case {String(i + 1).padStart(2, "0")}</p>
               <h3 className={`mt-4 text-2xl font-semibold ${theme === "light" ? "text-zinc-900" : "text-zinc-50"}`}>
                 {p.name}

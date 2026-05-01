@@ -4,7 +4,9 @@
  * 博客 / 笔记区块：卡片列表，锚点 #blog
  */
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useSiteUi } from "@/components/providers/SiteUiProvider";
+import { ART_PATHS, publicUrl } from "@/lib/artGallery";
 
 export function BlogSection() {
   const { t, theme } = useSiteUi();
@@ -39,6 +41,15 @@ export function BlogSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.06 }}
             >
+              <div className="relative -mx-6 -mt-6 mb-5 aspect-[16/10] overflow-hidden rounded-t-2xl border-b border-black/5 dark:border-white/10">
+                <Image
+                  src={publicUrl(ART_PATHS[post.cover])}
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 100vw, 320px"
+                  className="object-cover"
+                />
+              </div>
               <h3 className="text-lg font-semibold">{post.title}</h3>
               <p className={`mt-3 text-sm ${theme === "light" ? "text-zinc-600" : "text-zinc-400"}`}>{post.excerpt}</p>
             </motion.article>
