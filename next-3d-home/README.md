@@ -2,13 +2,17 @@
 
 基于 **Next.js 14（App Router）+ React 18 + TypeScript + React Three Fiber + Drei + Postprocessing + Tailwind + GSAP + Framer Motion** 的单页作品集。
 
-## 最快公开链接：Vercel（推荐）
+## 公开链接（不登录 Vercel 也可用）
 
-1. 把本目录 **`next-3d-home`** 推送到你的 GitHub 仓库（见下文「同步到 GitHub」）。
-2. 打开 [vercel.com](https://vercel.com) → Import 该仓库 → **Root Directory 选 `next-3d-home`** → Deploy。
-3. 部署完成后会得到 **`https://你的项目.vercel.app`**。
+推送本仓库 `main` 后，GitHub Actions 会把 **Next 静态导出**合并进 Pages，地址为：
 
-仓库根目录下的 **`VERCEL.md`** 有逐步截图式说明（中文）。
+**[https://kk5858-11.github.io/ge-zhan/next-3d/](https://kk5858-11.github.io/ge-zhan/next-3d/)**  
+（若仓库名不是 `ge-zhan`，请把路径里的 `ge-zhan` 换成你的仓库名。）
+
+## 可选：Vercel（需能登录 vercel.com）
+
+1. Import 仓库 → **Root Directory 选 `next-3d-home`** → Deploy。  
+2. 详见仓库根目录 **`VERCEL.md`**。
 
 ## 本地启动
 

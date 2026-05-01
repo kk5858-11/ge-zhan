@@ -1,4 +1,13 @@
-# 用 Vercel 部署 `next-3d-home`（最快公开链接）
+# 用 Vercel 部署 `next-3d-home`（可选）
+
+若 **Vercel / GitHub OAuth 登录失败**，可直接使用 **GitHub Pages 子路径**（已接入 CI，无需外站登录）：
+
+**Next 3D 个站：** [https://kk5858-11.github.io/ge-zhan/next-3d/](https://kk5858-11.github.io/ge-zhan/next-3d/)  
+（推送 `main` 后由 Actions 构建；若刚推送，请等待 1～3 分钟再打开。）
+
+---
+
+# 用 Vercel 部署 `next-3d-home`（可选，需能登录 Vercel）
 
 你的仓库根目录是「旧个站」+ 子目录 **`next-3d-home`**（Next.js 3D）。在 Vercel 里只要把**构建根目录**指到子文件夹即可。
 

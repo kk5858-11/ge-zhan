@@ -30,11 +30,24 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies
+      - name: Install dependencies (root Vite 个站)
         run: npm ci
 
-      - name: Build
+      - name: Build root site → dist
         run: npm run build
+
+      - name: Install & build Next 3D（静态导出到 out）
+        working-directory: next-3d-home
+        env:
+          NEXT_STATIC_BASE_PATH: /ge-zhan/next-3d
+        run: |
+          npm ci
+          npm run build
+
+      - name: Merge Next 静态站 into dist/next-3d
+        run: |
+          mkdir -p dist/next-3d
+          cp -R next-3d-home/out/. dist/next-3d/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
