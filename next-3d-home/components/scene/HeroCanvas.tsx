@@ -9,6 +9,7 @@ import { ContactShadows, Environment, OrbitControls, SoftShadows } from "@react-
 import { Suspense } from "react";
 import type { Theme } from "@/components/providers/SiteUiProvider";
 import { AbstractHero } from "./AbstractHero";
+import { HeroTechAccents } from "./HeroTechAccents";
 import { ScenePostFX } from "./ScenePostFX";
 
 type Props = {
@@ -51,6 +52,7 @@ export function HeroCanvas({ postFx, reducedMotion, theme }: Props) {
           {/* HDR 环境：提供金属/玻璃反射 */}
           <Environment preset="city" />
           <AbstractHero reducedMotion={reducedMotion} />
+          <HeroTechAccents reducedMotion={reducedMotion} theme={theme} />
         </Suspense>
 
         {/* 地面接触阴影，增强电影感 */}

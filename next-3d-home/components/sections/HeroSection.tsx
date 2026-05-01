@@ -24,13 +24,15 @@ export function HeroSection() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[center_35%]"
+          className={`object-cover object-[center_35%] transition-opacity duration-500 ${
+            theme === "light" ? "opacity-[0.32]" : "opacity-[0.38]"
+          }`}
         />
         <div
           className={`absolute inset-0 ${
             theme === "light"
-              ? "bg-gradient-to-b from-white/85 via-white/50 to-zinc-100/90"
-              : "bg-gradient-to-b from-black/75 via-black/45 to-black/88"
+              ? "bg-gradient-to-b from-white/55 via-white/25 to-zinc-100/88"
+              : "bg-gradient-to-b from-black/45 via-black/15 to-black/82"
           }`}
           aria-hidden
         />
@@ -60,7 +62,9 @@ export function HeroSection() {
       </motion.p>
       <motion.a
         href="#contact"
-        className="relative z-10 pointer-events-auto mt-10 rounded-full border border-indigo-500/40 bg-indigo-500/10 px-8 py-3 text-sm font-medium text-indigo-200 shadow-[0_0_40px_-10px_rgba(99,102,241,0.9)] backdrop-blur-md transition hover:border-indigo-400 hover:bg-indigo-500/20 hover:shadow-[0_0_55px_-8px_rgba(129,140,248,1)] md:text-base"
+        className={`relative z-10 pointer-events-auto mt-10 rounded-full border border-indigo-500/40 bg-indigo-500/10 px-8 py-3 text-sm font-medium shadow-[0_0_40px_-10px_rgba(99,102,241,0.9)] backdrop-blur-md transition hover:border-indigo-400 hover:bg-indigo-500/20 hover:shadow-[0_0_55px_-8px_rgba(129,140,248,1)] md:text-base ${
+          theme === "light" ? "text-indigo-800" : "text-indigo-200"
+        }`}
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}

@@ -54,7 +54,7 @@ export function AbstractHero({ reducedMotion }: Props) {
 
         <mesh castShadow receiveShadow rotation={[Math.PI / 3, 0.4, 0]}>
           <torusGeometry args={[1.55, 0.06, 16, 120]} />
-          <meshStandardMaterial color="#6366f1" metalness={1} roughness={0.1} emissive="#1e1b4b" emissiveIntensity={0.25} />
+          <meshStandardMaterial color="#6366f1" metalness={1} roughness={0.08} emissive="#312e81" emissiveIntensity={0.55} />
         </mesh>
 
         <mesh castShadow receiveShadow position={[0.1, -0.35, 0.35]} rotation={[0.5, 0.8, 0.2]}>

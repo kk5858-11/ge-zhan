@@ -22,7 +22,7 @@ export function ScenePostFX({ enabled }: Props) {
 
   return (
     <EffectComposer multisampling={4}>
-      <Bloom intensity={1.2} luminanceThreshold={0.25} mipmapBlur />
+      <Bloom intensity={1.45} luminanceThreshold={0.18} mipmapBlur />
       <DepthOfField focusDistance={0.012} focalLength={0.018} bokehScale={2.8} height={480} />
       <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
     </EffectComposer>
